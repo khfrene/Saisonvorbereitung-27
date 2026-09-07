@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1220" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <title>Wakeboard Performance 2027</title>
+  <style>
+    :root{--bg:#0b1220;--card:#131c2d;--muted:#8ea0b9;--text:#f5f7fb;--accent:#4fb3ff;--accent2:#7cf0c5;--danger:#ff7f7f;--line:#26334a;--shadow:0 12px 30px rgba(0,0,0,.22)}
+    *{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,#09111e 0%,#0d1523 100%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;min-height:100vh}
+    .app{max-width:480px;margin:0 auto;padding:calc(18px + env(safe-area-inset-top)) 16px calc(88px + env(safe-area-inset-bottom))}
+    .hero{padding:18px 18px 16px;border:1px solid var(--line);border-radius:24px;background:radial-gradient(circle at top right,rgba(79,179,255,.22),transparent 40%),linear-gradient(145deg,#152036,#101827);box-shadow:var(--shadow)}
+    .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2);font-weight:700}.hero h1{margin:8px 0 8px;font-size:28px;line-height:1.06}.hero p{margin:0;color:var(--muted);line-height:1.45}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.stat{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:16px;padding:12px}.stat b{display:block;font-size:18px}.stat span{font-size:11px;color:var(--muted)}
+    .section{margin-top:18px}.section-head{display:flex;align-items:center;justify-content:space-between;margin:0 4px 10px}.section h2{font-size:16px;margin:0}.pill{font-size:11px;color:#bfe7ff;background:rgba(79,179,255,.12);border:1px solid rgba(79,179,255,.25);padding:6px 9px;border-radius:999px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px;box-shadow:0 8px 22px rgba(0,0,0,.14)}
+    .session-title{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.session-title h3{margin:0;font-size:18px}.session-title small{color:var(--muted)}
+    .exercise{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}.exercise:first-of-type{border-top:0}.exercise-row{display:flex;justify-content:space-between;gap:10px;align-items:center}.exercise-name{font-weight:700}.meta{font-size:12px;color:var(--muted);margin-top:2px}
+    .set-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}.set{background:#0f1726;border:1px solid var(--line);border-radius:14px;padding:8px}.set label{font-size:10px;color:var(--muted);display:block;margin-bottom:5px}.set input{width:100%;border:0;background:transparent;color:var(--text);font-size:16px;font-weight:700;outline:none}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.input-card{background:#0f1726;border:1px solid var(--line);border-radius:14px;padding:10px}.input-card label{font-size:11px;color:var(--muted);display:block;margin-bottom:5px}.input-card input,.input-card select,.input-card textarea{width:100%;background:transparent;border:0;color:var(--text);font-size:15px;outline:none}.input-card textarea{min-height:54px;resize:vertical}
+    .btn{appearance:none;border:0;border-radius:16px;padding:13px 14px;font-weight:800;font-size:14px;cursor:pointer}.btn-primary{background:linear-gradient(135deg,var(--accent),#7c8cff);color:#06111f}.btn-secondary{background:#121b2b;color:var(--text);border:1px solid var(--line)}.btn-full{width:100%;margin-top:12px}
+    .progress{height:10px;background:#0f1726;border-radius:999px;overflow:hidden;border:1px solid var(--line)}.progress > div{height:100%;width:42%;background:linear-gradient(90deg,var(--accent2),var(--accent))}
+    .nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(480px,100%);padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(9,17,30,.94);backdrop-filter:blur(18px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);z-index:20}.nav button{border:0;background:transparent;color:var(--muted);font-size:11px;font-weight:700;padding:8px 4px}.nav button.active{color:var(--text)}
+    .screen{display:none}.screen.active{display:block}.share-card{aspect-ratio:9/16;background:radial-gradient(circle at 70% 10%,rgba(124,240,197,.24),transparent 35%),linear-gradient(180deg,#111a2b,#0b1220);border:1px solid var(--line);border-radius:28px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow)}
+    .share-card .big{font-size:46px;font-weight:900;line-height:1}.share-card .label{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.12em}.share-card .kpi{display:grid;grid-template-columns:1fr 1fr;gap:10px}.share-card .kpi div{padding:12px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}
+    .note{font-size:12px;color:var(--muted);line-height:1.45}.danger{color:var(--danger)}
+  </style>
+</head>
+<body>
+<div class="app">
+  <section id="today" class="screen active">
+    <div class="hero">
+      <div class="eyebrow">Wakeboard Performance 2027</div>
+      <h1>Heute: Lower + Reha</h1>
+      <p>Phase 0 · Belastbarkeit, Kraftbasis und saubere Bewegung vor Explosivität.</p>
+      <div class="stats">
+        <div class="stat"><b id="weightStat">100.0</b><span>kg aktuell</span></div>
+        <div class="stat"><b id="sessionsStat">0</b><span>Sessions</span></div>
+        <div class="stat"><b id="painStat">0</b><span>Ø Schmerz</span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2>Training heute</h2><span class="pill">RIR 2</span></div>
+      <div class="card" id="sessionCard"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><h2>Check-in</h2><span class="pill">30 Sek.</span></div>
+      <div class="card">
+        <div class="row">
+          <div class="input-card"><label>Körpergewicht</label><input id="bodyweight" type="number" step="0.1" inputmode="decimal" placeholder="100.0"></div>
+          <div class="input-card"><label>Energie 1–5</label><input id="energy" type="number" min="1" max="5" inputmode="numeric" placeholder="4"></div>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <div class="input-card"><label>Knöchel 0–10</label><input id="ankle" type="number" min="0" max="10" inputmode="numeric" placeholder="2"></div>
+          <div class="input-card"><label>Knie 0–10</label><input id="knee" type="number" min="0" max="10" inputmode="numeric" placeholder="1"></div>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <div class="input-card"><label>Armbeuge 0–10</label><input id="arm" type="number" min="0" max="10" inputmode="numeric" placeholder="1"></div>
+          <div class="input-card"><label>LWS 0–10</label><input id="back" type="number" min="0" max="10" inputmode="numeric" placeholder="1"></div>
+        </div>
+        <button class="btn btn-primary btn-full" onclick="saveCheckin()">Check-in speichern</button>
+        <p class="note">Bei deutlicher Beschwerdezunahme Übung stoppen/ersetzen. Sprünge bleiben im September noch draußen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="progress" class="screen">
+    <div class="hero"><div class="eyebrow">Progress</div><h1>Woche für Woche stärker</h1><p>Gewicht, Belastbarkeit und Trainingskonstanz auf einen Blick.</p></div>
+    <div class="section"><div class="section-head"><h2>September</h2><span class="pill">4 Wochen</span></div>
+      <div class="card">
+        <div class="meta">Trainingsfortschritt</div><div class="progress" style="margin-top:8px"><div id="progressBar"></div></div>
+        <div class="stats" style="margin-top:14px"><div class="stat"><b id="pSessions">0</b><span>Sessions</span></div><div class="stat"><b id="pWeight">100.0</b><span>kg</span></div><div class="stat"><b id="pPain">0</b><span>Ø Schmerz</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="share" class="screen">
+    <div class="section-head"><h2>Instagram Story</h2><span class="pill">9:16</span></div>
+    <div class="share-card" id="shareCard">
+      <div><div class="eyebrow">Road to Wakeboard 2027</div><div style="margin-top:18px" class="label">September Block</div><div class="big" id="shareSessions">0 Sessions</div></div>
+      <div class="kpi"><div><div class="label">Gewicht</div><b id="shareWeight">100.0 kg</b></div><div><div class="label">Ø Schmerz</div><b id="sharePain">0 / 10</b></div><div><div class="label">Fokus</div><b>Strength</b></div><div><div class="label">Goal</div><b>90–93 kg</b></div></div>
+      <div><div class="label">Mindset</div><h2 style="margin:8px 0 0">Stronger. More mobile. More durable.</h2></div>
+    </div>
+    <button class="btn btn-secondary btn-full" onclick="shareProgress()">Teilen / Screenshot vorbereiten</button>
+    <p class="note">Auf dem iPhone kannst du diesen Screen direkt als Story-Screenshot verwenden. Über den Teilen-Button wird zusätzlich ein kurzer Fortschrittstext erzeugt.</p>
+  </section>
+
+  <section id="plan" class="screen">
+    <div class="hero"><div class="eyebrow">September Plan</div><h1>4 Tage Kraft + Mobility</h1><p>Dein Fundament für Kicker, Inverts, Presses und belastbare Landungen.</p></div>
+    <div class="section"><div class="card">
+      <p><b>Mo</b> · Lower + Reha</p><p><b>Di</b> · Upper + Schulter</p><p><b>Mi</b> · Zone 2 + Mobility</p><p><b>Do</b> · Lower + Core</p><p><b>Fr</b> · Upper + Rotation</p><p><b>Sa</b> · optional Zone 2 + Mobility</p><p><b>So</b> · Rest</p>
+      <p class="note danger">Noch kein programmiertes Plyometrie-/Sprungtraining, solange der rechte Knöchel nicht ausreichend belastbar ist.</p>
+    </div></div>
+  </section>
+</div>
+
+<nav class="nav">
+  <button class="active" onclick="go('today',this)">Heute</button>
+  <button onclick="go('progress',this)">Progress</button>
+  <button onclick="go('share',this)">Share</button>
+  <button onclick="go('plan',this)">Plan</button>
+</nav>
+
+<script>
+const exercises = [
+  ['Romanian Deadlift','4 × 6–8'],['Leg Press','3 × 8–10'],['Bulgarian Split Squat','3 × 8/Bein'],['Leg Curl','3 × 10–12'],['Calf Raise','3 × 12–15'],['Tibialis Raise','3 × 15–20'],['Step Down','3 × 8/Bein'],['Pallof Press','3 × 10/Seite'],['Side Plank','3 × 30–45 s']
+];
+function state(){return JSON.parse(localStorage.getItem('wbp27')||'{"sessions":0,"weight":100,"pain":0,"sets":{}}')}
+function save(s){localStorage.setItem('wbp27',JSON.stringify(s));render()}
+function renderSession(){
+  const s=state(); const root=document.getElementById('sessionCard'); root.innerHTML='';
+  root.innerHTML='<div class="session-title"><div><h3>Lower Strength + Reha</h3><small>Technik vor Last · kein Schmerz erzwingen</small></div><span class="pill">ca. 60–75 min</span></div>';
+  exercises.forEach((ex,i)=>{
+    const wrap=document.createElement('div'); wrap.className='exercise';
+    wrap.innerHTML=`<div class="exercise-row"><div><div class="exercise-name">${ex[0]}</div><div class="meta">${ex[1]} · Ziel RIR 2</div></div></div><div class="set-grid">${[1,2,3,4].map(n=>`<div class="set"><label>Satz ${n}</label><input inputmode="decimal" placeholder="kg" value="${(s.sets[ex[0]]||[])[n-1]||''}" oninput="saveSet('${ex[0]}',${n-1},this.value)"></div>`).join('')}</div>`;
+    root.appendChild(wrap);
+  });
+  const b=document.createElement('button'); b.className='btn btn-primary btn-full'; b.textContent='Training abschließen'; b.onclick=finishSession; root.appendChild(b);
+}
+function saveSet(ex,i,v){const s=state(); s.sets[ex]=s.sets[ex]||[]; s.sets[ex][i]=v; localStorage.setItem('wbp27',JSON.stringify(s))}
+function finishSession(){const s=state(); s.sessions=(s.sessions||0)+1; save(s); alert('Session gespeichert. Stark – sauberer Fortschritt schlägt Ego-Lifts.')}
+function saveCheckin(){const vals=['ankle','knee','arm','back'].map(id=>Number(document.getElementById(id).value||0)); const s=state(); s.weight=Number(document.getElementById('bodyweight').value||s.weight||100); s.pain=(vals.reduce((a,b)=>a+b,0)/4).toFixed(1); save(s)}
+function render(){const s=state(); ['weightStat','pWeight'].forEach(id=>document.getElementById(id).textContent=Number(s.weight||100).toFixed(1)); document.getElementById('sessionsStat').textContent=s.sessions||0; document.getElementById('painStat').textContent=s.pain||0; document.getElementById('pSessions').textContent=s.sessions||0; document.getElementById('pPain').textContent=s.pain||0; document.getElementById('progressBar').style.width=Math.min(100,(s.sessions||0)/16*100)+'%'; document.getElementById('shareSessions').textContent=(s.sessions||0)+' Sessions'; document.getElementById('shareWeight').textContent=Number(s.weight||100).toFixed(1)+' kg'; document.getElementById('sharePain').textContent=(s.pain||0)+' / 10'; renderSession()}
+function go(id,el){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));el.classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+async function shareProgress(){const s=state(); const text=`Road to Wakeboard 2027 🏄\n${s.sessions||0} Sessions · ${Number(s.weight||100).toFixed(1)} kg · Ø Schmerz ${s.pain||0}/10\nStronger. More mobile. More durable.`; if(navigator.share){try{await navigator.share({title:'Wakeboard Performance 2027',text})}catch(e){}} else {navigator.clipboard?.writeText(text); alert('Fortschrittstext kopiert.')}}
+render();
+if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{})}
+</script>
+</body>
+</html>
